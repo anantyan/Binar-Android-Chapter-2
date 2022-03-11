@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Chapter 2 - Mini Challenge 2</string>
-    <string name="discover">Discover</string>
-    <string name="search">Search</string>
-    <string name="favorite">Favorite</string>
-    <string name="profile">Profile</string>
-    <string name="location">Surakarta, Central Java</string>
-    <string name="description_main">What do you <b>like to eat</b>? 🍱</string>
-</resources>
