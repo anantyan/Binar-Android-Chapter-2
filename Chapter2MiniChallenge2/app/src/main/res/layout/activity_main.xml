@@ -113,11 +113,17 @@
 
             <include layout="@layout/component_1_main" />
 
-            <include layout="@layout/component_2_main" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_component_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <include layout="@layout/component_3_main" />
 
-            <include layout="@layout/component_4_main" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_component_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
