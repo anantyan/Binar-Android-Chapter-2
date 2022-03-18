@@ -15,32 +15,12 @@ import id.anantyan.chapter2_minichallenge2.adapter.Component4Adapter
 import id.anantyan.chapter2_minichallenge2.databinding.ActivityMainBinding
 import id.anantyan.chapter2_minichallenge2.model.DataComponent2
 import id.anantyan.chapter2_minichallenge2.model.DataDummy.dataComponent
-
-object PermissionUI {
-    const val PERMISSION_LOCATION = 1001
-    fun requestLocation(activity: Activity) {
-        EasyPermissions.requestPermissions(
-            activity,
-            "Beberapa fitur tidak akan jalan tanpa adanya izin lokasi!",
-            PERMISSION_LOCATION,
-            perms = arrayOf(
-                android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            )
-        )
-    }
-    fun hasPermissionLocation(context: Context): Boolean {
-        return EasyPermissions.hasPermissions(context, perms = arrayOf(
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-        ))
-    }
-}
+import id.anantyan.chapter2_minichallenge2.utils.PermissionUtils
 
 class MainActivity : AppCompatActivity(),
     Component2Adapter.Component2Callback,
     EasyPermissions.PermissionCallbacks {
-    
+
     private lateinit var adapter1: Component2Adapter
     private lateinit var adapter2: Component4Adapter
     private lateinit var binding: ActivityMainBinding
@@ -79,7 +59,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         when (requestCode) {
-            PermissionUI.PERMISSION_LOCATION -> { }
+            PermissionUtils.PERMISSION_LOCATION -> { }
         }
     }
 
@@ -93,8 +73,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onClick(item: DataComponent2, position: Int) {
-        PermissionUI.requestLocation(this)
-        if (PermissionUI.hasPermissionLocation(this)) {
+        PermissionUtils.requestLocation(this)
+        if (PermissionUtils.hasPermissionLocation(this)) {
             Toast.makeText(
                 this,
                 "${item.title}, position : ${position}!",

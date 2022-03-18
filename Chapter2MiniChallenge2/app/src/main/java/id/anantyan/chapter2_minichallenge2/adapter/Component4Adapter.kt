@@ -6,6 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.size.ViewSizeResolver
+import coil.transform.RoundedCornersTransformation
+import id.anantyan.chapter2_minichallenge2.R
 import id.anantyan.chapter2_minichallenge2.databinding.ListItemComponent4Binding
 import id.anantyan.chapter2_minichallenge2.model.DataComponent4
 
@@ -14,6 +18,12 @@ class Component4Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
             @SuppressLint("SetTextI18n")
             fun bind(item: DataComponent4) {
+                binding.imgView.load("https://i.ibb.co/zJHYGBP/binarlogo.jpg") {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_baseline_image_24)
+                    transformations(RoundedCornersTransformation(0f))
+                    size(ViewSizeResolver(binding.imgView))
+                }
                 binding.txtTitle.text = item.title
                 binding.txtOpened.text = item.opened
                 binding.txtRating.text = "${item.rating}"
